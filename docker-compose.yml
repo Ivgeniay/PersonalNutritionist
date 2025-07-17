@@ -1,0 +1,70 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:15
+    env_file:
+      - .env.pn.backend
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - nutritionist-network
+
+  backend:
+    build: 
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    env_file:
+      - .env.pn.backend
+    environment:
+      - ConnectionStrings__DefaultConnection=Host=postgres;Port=5432;Database=${POSTGRES_DB};Username=${POSTGRES_USER};Password=${POSTGRES_PASSWORD}
+    networks:
+      - nutritionist-network
+
+  frontend:
+    build:
+      context: ./frontend/personal-nutritionist
+      dockerfile: Dockerfile
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    env_file:
+      - .env.pn.frontend
+    networks:
+      - nutritionist-network
+
+  telegram-bot:
+    build:
+      context: ./telegram-bot
+      dockerfile: Dockerfile
+    depends_on:
+      - backend
+    env_file:
+      - .env.pn.tg
+    networks:
+      - nutritionist-network
+
+  ai-service:
+    build:
+      context: ./nutrition-ai-service
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.pn.ai-service
+    networks:
+      - nutritionist-network
+
+volumes:
+  postgres_data:
+
+networks:
+  nutritionist-network:
+    driver: bridge

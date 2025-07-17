@@ -1,0 +1,33 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Debug Backend",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build All Projects",
+            "program": "${workspaceFolder}/backend/PersonalNutritionist.WebApi/bin/Debug/net9.0/PersonalNutritionist.WebApi.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/backend/PersonalNutritionist.WebApi",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "env": {
+                "ASPNETCORE_ENVIRONMENT": "Development"
+            }
+        },
+        {
+            "name": "Debug Telegram Bot",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "Build Telegram Bot",
+            "program": "${workspaceFolder}/telegram-bot/PersonalNutritionist.TelegramBot/bin/Debug/net9.0/PersonalNutritionist.TelegramBot.dll",
+            "args": [],
+            "cwd": "${workspaceFolder}/telegram-bot/PersonalNutritionist.TelegramBot",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "env": {
+                "DOTNET_ENVIRONMENT": "Development"
+            }
+        }
+    ]
+}

@@ -1,0 +1,6 @@
+@PersonalNutritionist.WebApi_HostAddress = http://localhost:5187
+
+GET {{PersonalNutritionist.WebApi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

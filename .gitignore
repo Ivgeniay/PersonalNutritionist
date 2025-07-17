@@ -1,0 +1,4 @@
+.env.pn.backend
+.env.pn.ai-service
+.env.pn.frontend
+.env.pn.tg
