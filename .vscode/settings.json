@@ -1,0 +1,6 @@
+{
+    "dotnet.completion.showCompletionItemsFromUnimportedNamespaces": true,
+    "csharp.semanticHighlighting.enabled": true,
+    "omnisharp.useModernNet": true,
+    "omnisharp.enableAsyncCompletion": true
+}

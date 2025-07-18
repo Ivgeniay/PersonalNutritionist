@@ -1,5 +1,21 @@
+using PersonalNutritionist.Domain.Interfaces.Repositories;
+using PersonalNutritionist.Persistence.Repositories;
+
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
+builder.Services.AddScoped<IActivityInfoRepository, ActivityInfoRepository>();
+builder.Services.AddScoped<IGoalsRepository, GoalsRepository>();
+builder.Services.AddScoped<ILifestyleRepository, LifestyleRepository>();
+builder.Services.AddScoped<ILoginPasswordAuthRepository, LoginPasswordAuthRepository>();
+builder.Services.AddScoped<IMedicalInfoRepository, MedicalInfoRepository>();
+builder.Services.AddScoped<INutritionHabitsRepository, NutritionHabitsRepository>();
+builder.Services.AddScoped<IPersonCardRepository, PersonCardRepository>();
+builder.Services.AddScoped<IPhysicalParametersRepository, PhysicalParametersRepository>();
+builder.Services.AddScoped<ITelegramAuthRepository, TelegramAuthRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+// builder.Services.AddScoped<>();
+
+
 
 var app = builder.Build();
 
